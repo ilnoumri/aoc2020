@@ -13,12 +13,12 @@ def countTrees(right, down):
     map_width = len(_map[0])
     map_height = len(_map)
     cur_y = down
-    cur_x = (0 + right) % (map_width -1)
+    cur_x = (0 + right) % (map_width)
     trees = 0
     while cur_y < map_height:
         if _map[cur_y][cur_x] == "#":
             trees += 1
-        cur_x = (cur_x + right) % (map_width -1)
+        cur_x = (cur_x + right) % (map_width)
         cur_y = cur_y + down
     return trees
 

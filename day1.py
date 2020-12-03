@@ -3,9 +3,10 @@ s = set()
 s2 = []
 lines = open_file("1/input")
 for line in lines:
-    num = int(line.strip())
+    num = int(line)
     s.add(num)
-    s2.append(num) 
+    s2.append(num)
+
 def find_two_numbers():
     for e in s2:
         if 2020-e in s:
