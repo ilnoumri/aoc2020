@@ -9,6 +9,7 @@ for line in lines:
         __map.append(square)
     _map.append(__map)
 
+
 def countTrees(right, down):
     map_width = len(_map[0])
     map_height = len(_map)
@@ -22,9 +23,10 @@ def countTrees(right, down):
         cur_y = cur_y + down
     return trees
 
+
 print("### PART 1")
 print(countTrees(3, 1))
-dirs = [(1,1), (3,1), (5,1), (7,1), (1,2)]
+dirs = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]
 res = 1
 for d in dirs:
     right, down = d
@@ -32,4 +34,3 @@ for d in dirs:
 
 print("### PART 2")
 print(res)
-
