@@ -30,19 +30,13 @@ def get_info(code):
 
 seats_info = [get_info(seat) for seat in seats]
 print("### PART 1")
-print(max([info[2] for info in seats_info]))
+seat_id_list = [info[2] for info in seats_info]
+print(max(seat_id_list))
 
 print("### PART 2")
-seats_to_check = []
-for seat_info in seats_info:
-    if seat_info[0] == 0 or seat_info[0] == 127:
-        continue
-    seats_to_check.append(seat_info)
-
-seats_to_check_ids = [info[2] for info in seats_to_check]
-seats_to_check_ids.sort()
-to_check = set(seats_to_check_ids)
-range_to_check = range(seats_to_check_ids[0], seats_to_check_ids[-1] + 1)
+seat_id_list.sort()
+to_check = set(seat_id_list)
+range_to_check = range(seat_id_list[0], seat_id_list[-1] + 1)
 res = None
 for elt in range_to_check:
     if elt not in to_check:
