@@ -1,8 +1,9 @@
 from lib import open_file
 
 answers = open_file("6/input")
-#For conveniance we add an empty string at the end of our answers
+# For conveniance we add an empty string at the end of our answers
 answers.append("")
+
 
 def nb_questions_yes(group_answers, everyone=False):
     questions = {}
@@ -16,6 +17,7 @@ def nb_questions_yes(group_answers, everyone=False):
         return sum(1 for answer in questions.keys() if questions[answer] == len(group_answers))
     else:
         return len(questions.keys())
+
 
 res_anyone, res_everyone = 0, 0
 group_answers = []
@@ -31,6 +33,3 @@ print("### PART 1")
 print(res_anyone)
 print("### PART 2")
 print(res_everyone)
-
-
-

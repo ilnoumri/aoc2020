@@ -3,11 +3,13 @@ from lib import open_file
 numbers = open_file("9/input")
 numbers = [int(num) for num in numbers]
 
+
 def property_checker(preamble, nb):
     for elt in preamble:
         if nb-elt in preamble:
             return True
     return False
+
 
 def find_nb_not_matching(n):
     idx = 0
@@ -17,6 +19,7 @@ def find_nb_not_matching(n):
         if not property_checker(preamble, nb):
             return nb, idx+n
         idx += 1
+
 
 def find_encryption_weakness():
     target, idx = find_nb_not_matching(25)
@@ -33,9 +36,9 @@ def find_encryption_weakness():
             i = cursor
         else:
             candidate_nbs.add(numbers[i])
-            i-=1
+            i -= 1
 
-    
+
 print("### PART 1")
 print(find_nb_not_matching(25)[0])
 print("### PART 2")

@@ -6,7 +6,8 @@ rules_dict = {}
 
 for rule in rules:
     bags, contain = rule.split("contain")
-    contain_list = [bag.replace("bags", "").replace("bag", "").replace(".", "").strip() for bag in contain.split(", ")]
+    contain_list = [bag.replace("bags", "").replace("bag", "").replace(
+        ".", "").strip() for bag in contain.split(", ")]
     value = []
     for bag in contain_list:
         nb, name = 0, ""
@@ -21,15 +22,17 @@ for rule in rules:
 
 char_regex = re.compile("[a-z]+")
 
+
 def bag_contain_gold(bag_contain):
     for bag in bag_contain:
-        _,name = bag
+        _, name = bag
         if name == "shiny gold":
             return True
         if name in rules_dict.keys():
             if bag_contain_gold(rules_dict[name]):
                 return True
     return False
+
 
 def find_shiny_gold_bag():
     shiny_gold = 0
@@ -38,7 +41,9 @@ def find_shiny_gold_bag():
             shiny_gold += 1
     return shiny_gold
 
+
 int_regex = re.compile("[0-9]+")
+
 
 def bag_count(bag_contain):
     res = 0
@@ -49,8 +54,10 @@ def bag_count(bag_contain):
             res += nb
     return res
 
+
 def find_shiny_gold_nb_bag():
     return bag_count(rules_dict["shiny gold"])
+
 
 print("### PART 1")
 print(find_shiny_gold_bag())

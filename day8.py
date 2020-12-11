@@ -1,6 +1,8 @@
 from lib import open_file
 
 instructions = open_file("8/input")
+
+
 def run(instructions):
     seen = set()
     acc = 0
@@ -24,6 +26,7 @@ def run(instructions):
             idx += value
     return (acc, infinite_loop, seen)
 
+
 def find_acc(instructions, autofix=False):
     ins = instructions.copy()
     acc, infinite_loop, seen = run(ins)
@@ -41,11 +44,11 @@ def find_acc(instructions, autofix=False):
         if infinite_loop:
             ins = instructions.copy()
         else:
-            print(f"Autofix successful! Error was {opcode} {value} at index {idx}")
+            print(
+                f"Autofix successful! Error was {opcode} {value} at index {idx}")
             return acc
     print("Could not fix the instructions set")
     return None
-            
 
 
 print("### PART 1")

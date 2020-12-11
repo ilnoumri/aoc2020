@@ -6,7 +6,8 @@ nums.append(jolt_max)
 nums.append(0)
 nums.sort()
 
-def find_jolt_diffs_nb(n, picked = {}):
+
+def find_jolt_diffs_nb(n, picked={}):
     nb = 0
     for num in nums:
         if num + n in nums:
@@ -17,6 +18,8 @@ def find_jolt_diffs_nb(n, picked = {}):
 
 
 seen = {}
+
+
 def distinct_arrangements_nb(jolt, jolt_low, jolt_hi):
     if jolt in seen:
         return seen[jolt]
@@ -30,6 +33,7 @@ def distinct_arrangements_nb(jolt, jolt_low, jolt_hi):
         seen[j] = res
         arrangements += res
     return arrangements
+
 
 print("### PART 1")
 jolt_1, picked = find_jolt_diffs_nb(1)
