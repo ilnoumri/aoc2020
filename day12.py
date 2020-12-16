@@ -20,10 +20,11 @@ def manhattan_distance(current):
         res += abs(v)
     return res
 
+
 def move(direction, value, current_=current):
     to_add = value
     dir_idx = directions.index(direction)
-    opposite = directions[(dir_idx+2)%4]
+    opposite = directions[(dir_idx+2) % 4]
     if opposite in current_:
         if current_[opposite] - value > 0:
             final_direction = opposite
@@ -37,6 +38,7 @@ def move(direction, value, current_=current):
         current_[direction] += value
     else:
         current_[direction] = value
+
 
 def forward(value):
     to_add = value
@@ -55,27 +57,30 @@ def forward(value):
     else:
         current[facing["value"]] = to_add
 
+
 def forward_waypoint(value):
     to_add = {}
-    for k,v in waypoint.items():
+    for k, v in waypoint.items():
         to_add[k] = value * v
-    for k,v in to_add.items():
+    for k, v in to_add.items():
         move(k, v, current_waypoint)
 
 
 def turn(direction, value):
     possibilities = {90: 1, 180: 2, 270: 3}
-    new_dir_idx = (facing["idx"]  + possibilities[value]) % 4
+    new_dir_idx = (facing["idx"] + possibilities[value]) % 4
     if direction == "L":
         new_dir_idx = (facing["idx"] - possibilities[value]) % 4
     facing["value"] = directions[new_dir_idx]
-    facing["opposite"] = directions[(new_dir_idx+2)%4]
+    facing["opposite"] = directions[(new_dir_idx+2) % 4]
     facing["idx"] = new_dir_idx
 
+
 def swap(d, a, b):
-    tmp = d[b] 
+    tmp = d[b]
     d[b] = d[a]
     d[a] = tmp
+
 
 def turn_waypoint(direction, value):
     global waypoint
@@ -85,9 +90,9 @@ def turn_waypoint(direction, value):
         swap(waypoint_keys, 0, 1)
     position = "".join(waypoint_keys)
     waypoint_idx = waypoint_dirs.index(position)
-    new_waypoint = waypoint_dirs[(waypoint_idx + possibilities[value])%4]
+    new_waypoint = waypoint_dirs[(waypoint_idx + possibilities[value]) % 4]
     if direction == "L":
-        new_waypoint = waypoint_dirs[(waypoint_idx - possibilities[value])%4]
+        new_waypoint = waypoint_dirs[(waypoint_idx - possibilities[value]) % 4]
     old = waypoint
     waypoint = {}
     for direction in list(new_waypoint):
@@ -104,7 +109,8 @@ def turn_waypoint(direction, value):
     if possibilities[value] != 2:
         keys = list(waypoint.keys())
         swap(waypoint, keys[0], keys[1])
- 
+
+
 def apply_inst():
     for ins in instructions:
         i = list(ins)
@@ -118,6 +124,7 @@ def apply_inst():
         elif direction in "NSEW":
             move(direction, value)
             move(direction, value, waypoint)
+
 
 apply_inst()
 print("### PART 1")

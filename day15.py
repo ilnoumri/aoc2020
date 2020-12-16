@@ -6,7 +6,7 @@ try:
     else:
         numbers = open_file("15/15.input")
 except:
-        numbers = open_file("15/15.input")
+    numbers = open_file("15/15.input")
 
 numbers = [int(elt) for elt in numbers[0].split(",")]
 
@@ -18,6 +18,7 @@ def run(numbers, limit=2020):
     for i in range(len(numbers)-1, limit-1):
         seen[last_spoken], last_spoken = i, i - seen[last_spoken] if last_spoken in seen else 0
     return last_spoken
+
 
 print("### PART 1")
 print(run(numbers))

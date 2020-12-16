@@ -86,7 +86,6 @@ def find_which_range(correct_tickets):
                 res[p_f] = [i]
             else:
                 res[p_f].append(i)
-    all_attributed = False
     res_size = len(res.keys())
     # final_res will be a dict of field: correct idx
     final_res = {}
@@ -129,4 +128,5 @@ def part2(bad_nearby_tickets):
 print("### PART 1")
 part1_res, bad_nearby_tickets = part1()
 print(part1_res)
+print("### PART 2")
 print(part2(bad_nearby_tickets))

@@ -2,6 +2,7 @@ from lib import open_file
 from copy import deepcopy
 seats = [list(elt) for elt in open_file("11/input")]
 
+
 def get_adjeacents(x, y):
     return ((x, y+1), (x+1, y), (x, y-1), (x-1, y), (x-1, y+1), (x+1, y+1), (x-1, y-1), (x+1, y-1))
 

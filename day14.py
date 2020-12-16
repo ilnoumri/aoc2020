@@ -5,6 +5,7 @@ instructions = open_file("14/input")
 memory = {}
 memory2 = {}
 
+
 def apply_mask(value, mask):
     res = ""
     for i in range(len(mask)):
@@ -17,8 +18,10 @@ def apply_mask(value, mask):
             res += value[i]
     return res
 
+
 def get_bin_possibilities(num):
     return ["".join(comb) for comb in product(["0", "1"], repeat=num)]
+
 
 def get_mask_possibilities(address, mask):
     res = ""
@@ -42,13 +45,15 @@ def get_mask_possibilities(address, mask):
         addresses_to_insert.append(int(address_bin, 2))
     return addresses_to_insert
 
+
 def insert_in_memory(address, value, mask):
     value = int(value)
     bin_format = '{' + f"0:0{len(mask)}b" + '}'
     binary = bin_format.format(value)
     result = apply_mask(binary, mask)
     memory[address] = int(result, 2)
-    
+
+
 def insert_in_memory_with_bitmask(address, value, bitmask):
     value = int(value)
     bin_format = '{' + f"0:0{len(bitmask)}b" + '}'
@@ -56,6 +61,7 @@ def insert_in_memory_with_bitmask(address, value, bitmask):
     addresses_to_insert = get_mask_possibilities(binary, bitmask)
     for a in addresses_to_insert:
         memory2[a] = value
+
 
 def part1_part2():
     mask = None
@@ -76,6 +82,7 @@ def part1_part2():
     for v in memory2.values():
         res2 += v
     return res1, res2
+
 
 part1, part2 = part1_part2()
 print("### PART 1")
