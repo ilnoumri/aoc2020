@@ -130,3 +130,6 @@ dmypy.json
 
 # Vim swap file
 *.swp
+
+# Debug folder
+debug/
